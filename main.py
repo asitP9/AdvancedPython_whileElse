@@ -7,6 +7,20 @@ def is_comment(item):
     return isinstance(item, str) and item.startswith("#")
 
 def execute(program):
+    """
+    Execute a stack program
+    Args:
+    program: Any stack-like containing where each item in the stack
+    is a callable operators or non callable operands. The top most items on the stack may be strings
+    beginning with the '#' for the purposes of documentation. stack-like means support for:
+
+    item= stack.pop()  # remove and return the top item
+    stack.append(item) # push an item to the top
+    if stack:          # false in a boolean context when empty
+    """
+
+    # Find the start of the 'program' by skipping
+    # any item which is a comment
     while program:
         item=program.pop()
         if not is_comment(item):
@@ -34,20 +48,7 @@ def execute(program):
         print("Program successful")
         print("Result: ", pending)
     print("Finished")
-"""
-Execute a stack program
-Args:
-program: Any stack-like containing where each item in the stack
-is a callable operators or non callable operands. The top most items on the stack may be strings
-beginning with the '#' for the purposes of documentation. stack-like means support for:
 
-item= stack.pop()  # remove and return the top item
-stack.append(item) # push an item to the top
-if stack:          # false in a boolean context when empty
-"""
-
-# Find the start of the 'program' by skipping
-# any item which is a comment
 
 
 
